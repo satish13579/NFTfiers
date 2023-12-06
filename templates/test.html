@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Design</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1C1038;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-rows: 0fr 1fr;
+            border: 1px;
+            margin-top: 10px;
+        }
+
+        .students {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .no-of {
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-bottom: 0px;
+            color: wheat;
+            display: flex;
+            align-items: center;
+        }
+
+        .first, .second, .third, .fourth, .fifth {
+            color: #000000;
+            border: 1px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            border-color: #000000;
+            border-style: solid;
+            padding: 5px;
+            padding: 10px;
+        }
+
+        .six {
+            width: 150px;
+            border-radius: 10px;
+            border: 1px;
+            border-color: #ffffff;
+            border-style: solid;
+            background-color: #1C1038;
+            color: white;
+        }
+
+        @media (min-width: 576px) {
+            .students .col-md {
+                flex-basis: 50%;
+                max-width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            <div class="no-of">
+                <h4><b>No: of Students:</b></h4>
+            </div>
+            <div class="row students">
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="first">
+                        <p><b>Name:</b><span>Sandeep Varma .M</span></p>
+                    </div>
+                    <div class="2">
+                        <p><b>Roll no:</b><span>21H71A5447</span></p>
+                    </div>
+                    <div class="3">
+                        <p><b>Branch:</b><span>AIDS</span></p>
+                    </div>
+                    <div class="4">
+                        <p><b>Graduation status:</b><span>IV Sem</span></p>
+                    </div>
+                    <div class="5">
+                        <p><b>Graduation year:</b><span>Jun 2025</span></p>
+                    </div>
+                    <div class="6">
+                        <button class="six">Issue certificate</button>
+                    </div>
+                </div>
+                <!-- Repeat the same structure for other students' cards -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9

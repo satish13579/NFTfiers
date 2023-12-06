@@ -1,0 +1,81 @@
+{
+    "name": "NFTicated",
+    "methods": [
+        {
+            "name": "create",
+            "args": [],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "add_user",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "user_address"
+                },
+                {
+                    "type": "string",
+                    "name": "rollno"
+                },
+                {
+                    "type": "string",
+                    "name": "name"
+                },
+                {
+                    "type": "string",
+                    "name": "branch"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "add_certificate",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "user_address"
+                },
+                {
+                    "type": "string",
+                    "name": "cert"
+                },
+                {
+                    "type": "uint64",
+                    "name": "pos"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "make_grad",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "user_address"
+                }
+            ],
+            "returns": {
+                "type": "string"
+            }
+        },
+        {
+            "name": "get_user",
+            "args": [
+                {
+                    "type": "address",
+                    "name": "user_address"
+                }
+            ],
+            "returns": {
+                "type": "byte[]"
+            }
+        }
+    ],
+    "networks": {}
+}

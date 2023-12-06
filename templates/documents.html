@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+    <script src="https://kit.fontawesome.com/a4e89c7158.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+          body{
+            font-family: 'Poppins', sans-serif;     
+            background-color:#1C1038; 
+          }
+          
+          .collapse{
+              margin-left: 100px;
+              display: flex;
+              flex-direction: row;
+              flex: 3;
+              justify-content: space-between;
+              align-items: center;
+          }
+  
+        .collapse ul li a{
+            color: rgb(255, 255, 255);
+            margin-right: 10px;
+  
+          }
+  
+          .container{
+            margin-left: 10px;
+          }
+  
+          .social{
+            display: flex;
+            flex-direction: row;
+          }
+  
+          .social a{
+            padding-right: 5px;
+          }
+  
+          .socialicons{
+            margin-top: 17px;
+            margin-bottom: 20px;
+          }
+  
+          span{
+            margin-left: 10px;
+          }
+  
+          #hello{
+            margin-top: 20px;
+          }
+  
+          .sign-in{
+            display: flex;
+            flex-direction: row;
+          }
+  
+          .dropdown-menu{
+            background-color: #000000;
+            border: 3px;
+            border-width: 5px;
+            border-color: #ffffff;
+            border-radius: 10px;
+          }
+  
+          .dropdown-item:hover{
+            background-color:#1C1038;
+            color: white;
+          }
+  
+  
+          .login{
+            margin-left: 5px;
+            width: 130px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 19px;
+            border-radius: 10px;
+            border-color: #403b49;
+            border-style: solid;
+            background-color:#1C1038;
+            color: white;
+          }
+  
+          .login:hover{
+            transition: all 0.6s;
+            color: #ffffff;
+            cursor: pointer;
+            background-color: black;
+            border-color: rgb(3, 3, 46);
+          }
+  
+          #log{
+            margin-left: 0px;
+          }
+  
+          .social a :hover{
+            color: #797385;
+          }
+  
+          h1{
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: rgb(0, 0, 0);
+          }
+  
+          .login a{
+            text-decoration: none;
+            color: #ffffff;
+          }
+
+          .col{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 15px;
+          }
+    </style>
+</head>
+<body>
+
+        <!--Navbar-->
+    
+        <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #000000!important;">
+            <div class="container">
+              <img src="static/nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+                <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+                </button>
+            <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+              <ul class="navbar-nav text-light">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/"> Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/student">My Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/documents" style="text-decoration-line: overline;">Documents</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Contact us
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="social">
+                <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+                <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+              </div>
+              <div class="sign-in">
+                <button class="login logout">
+                 <a href="#">logout<i class="fa-solid fa-right-to-bracket fa-beat fa-sm" style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+                </button>
+              </div>
+            </div>
+    
+            <!--offcanvas-->
+    
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="student.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="myprofile.html">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="documents.html" style="text-decoration-line: overline;">Documents</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact us
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+                              </ul>
+                            </li>
+                          </ul>
+                          <div class="socialicons">
+                            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+                            <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+                            <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+                          </div>
+                          <div class="sign-in">
+                            <button class="login logout" id="log">
+                              <a href="#">logout<i class="fa-solid fa-right-to-bracket fa-beat fa-sm" style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+                            </button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <script>
+          function createtoast(msg) {
+            var count = parseInt($('#contoast').attr('data-count'));
+            var toast = `<div id="liveToast` + count + `" data-bs-autohide='false' data-bs-animation='true' data-bs-delay='2000' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                      <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                        <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                        <strong class="me-auto">>></strong>
+                        <small>Just Now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                      </div>
+                      <div id='bo`+ count + `' class="toast-body">
+                
+                      </div>
+                    </div>`
+            $('#contoast').html($('#contoast').html() + toast);
+            bo = document.getElementById('bo' + count);
+            bo.innerHTML = msg;
+            var toastLiveExample = document.getElementById('liveToast' + count);
+            var toast1 = new bootstrap.Toast(toastLiveExample);
+            toast1.show();
+            count++;
+            $('#contoast').attr('data-count', count);
+            count--;
+            setTimeout(function (e) {
+              $("#liveToast" + count).toast("hide");
+            }, 8000)
+          }
+          $(document).on('click', '.logout', function (e) {
+            $.ajax({
+              type: "get",
+              url: "http://127.0.0.1:5000/logout",
+              success: function (dataResult) {
+                var dataResult = JSON.parse(dataResult);
+                if (dataResult.status == true) {
+                  createtoast('Logged Out');
+                  window.location.href = "http://127.0.0.1:5000/"
+                }
+                else if (dataResult.status == false) {
+                  createtoast(dataResult.notify);
+                  window.location.href = "http://127.0.0.1:5000/"
+                }
+              },
+              error: function (requestObject, error, errorThrown) {
+                alert("Unable to Connect To Server.!!\nTurn on The Server");
+              }
+            });
+          });
+          
+
+      
+    
+
+  </script>
+        <!--Body-->
+            
+                <script>
+                  $(document).ready(function (e) {
+            createtoast("Fetching User Documents From Blockchain, This may Take Few Seconds");
+                  $.ajax({
+        type: "get",
+        url: "http://127.0.0.1:5000/get_user",
+        success: function (data) {
+          datar = JSON.parse(data);
+          if (datar.status) {
+            createtoast(data.notify);
+            window.location = "http://127.0.0.1:5000/"
+          }
+          else {
+            createtoast("Fetched User Documents Successfully.!!")
+            d = JSON.parse(data);
+            certs=d.certificates
+            console.log(certs)
+            certs=Object.keys(d.certificates)
+            for(var i=0;i<certs.length-1;i++){
+              c=certs[i];
+              console.log(c);
+              img=d.certificates[c].external_url;
+              img=img.substring(7);
+              $('#con').html($('#con').html()+`<div class="card">
+                    <img style="height:560px;width:400px;margin:auto;" src="https://ipfs.io/ipfs/`+img+`" class="card-img-top">
+                    <div class="card-body">
+                      <h5 class="card-title">`+d.certificates[c].description+`</h5>
+                      <p class="card-text">Properties:`+JSON.stringify(d.certificates[c].properties)+`</a>
+                    </div>
+                  </div>`)
+            }
+
+          }
+        } 
+      });
+    });
+                </script>
+
+              <div class="col" id="con">
+
+            </div>
+            <div id="contoast" data-count="0" class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                  <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                  <strong class="me-auto">>></strong>
+                  <small>Just Now</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id='bo' class="toast-body">
+          
+                </div>
+              </div>
+            </div>
+</body>
+</html>

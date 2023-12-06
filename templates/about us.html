@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a4e89c7158.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body{
+          font-family: 'Poppins', sans-serif;     
+          background-color:#000000; 
+        }
+        
+        .collapse{
+            margin-left: 200px;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+        }
+
+      .collapse ul li a{
+          color: rgb(255, 255, 255);
+          margin-right: 10px;
+
+        }
+
+        .container{
+          margin-left: 10px;
+        }
+
+        .social{
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          padding-left: 150px;
+        }
+
+        .social a{
+          padding-right: 5px;
+        }
+
+        .socialicons{
+          margin-top: 17px;
+          margin-bottom: 20px;
+        }
+
+        span{
+          margin-left: 10px;
+        }
+
+        #hello{
+          margin-top: 20px;
+        }
+
+        .sign-in{
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+        }
+
+        .dropdown-menu{
+          background-color: #1C1038;
+        }
+
+        .dropdown-item:hover{
+          background-color: black;
+          color: white;
+        }
+
+        .login{
+          margin-left: 15px;
+          width: 100px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          font-size: 19px;
+          border-radius: 10px;
+          border-color: #403b49;
+          border-style: solid;
+          background-color:#1C1038;
+          color: white;
+        }
+
+        .login:hover{
+          transition: all 0.6s;
+          color: #ffffff;
+          cursor: pointer;
+          background-color: black;
+          border-color: rgb(3, 3, 46);
+        }
+
+        #log{
+          margin-left: 0px;
+        }
+
+        .social a :hover{
+          color: #797385;
+        }
+
+        h1{
+          text-align: center;
+          font-weight: bold;
+          margin-top: 15px;
+          margin-bottom: 5px;
+          color: rgb(255, 255, 255);
+        }
+
+        .carousel{
+          margin-left: 50px;
+          margin-right: 50px;
+        }
+
+        .login a{
+          text-decoration: none;
+          color: #ffffff;
+        }
+    </style>
+    <title>About us</title>
+</head>
+<body>
+
+    <!--Navbar-->
+
+    <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #1C1038!important;">
+        <div class="container">
+          <img src="nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+            </button>
+        <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+          <ul class="navbar-nav text-light">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="Home.html"> Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="about us.html" style="text-decoration-line: overline;">About us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="social">
+            <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+            <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+          </div>
+          <div class="sign-in">
+            <button class="login">
+            <a href="student.html">login<i class="fa-solid fa-right-to-bracket fa-beat fa-sm" style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+            </button>
+          </div>
+        </div>
+
+        <!--offcanvas-->
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="Home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="#" style="text-decoration-line: overline;">About us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Contact us
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <div class="socialicons">
+                        <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+                        <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+                      </div>
+                      <div class="sign-in">
+                        <button class="login" id="log">
+                        <a href="student.html">login<i class="fa-solid fa-right-to-bracket fa-beat fa-sm" style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+                        </button>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--Body-->
+
+    <h1>
+      How Does NFT'S Work?
+    </h1>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="pag1.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+        <div class="carousel-item">
+          <img src="pag2.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+        <div class="carousel-item">
+          <img src="pag3.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+        <div class="carousel-item">
+          <img src="pag4.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+        <div class="carousel-item">
+          <img src="pag5.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+        <div class="carousel-item">
+          <img src="pag6.gif" class="d-block w-100" alt="..." height="520px">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</body>
+</html>

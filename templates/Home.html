@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a4e89c7158.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;
+    }
+
+    .collapse {
+      margin-left: 200px;
+      display: flex;
+      flex-direction: row;
+      flex: 3;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .collapse ul li a {
+      color: rgb(255, 255, 255);
+      margin-right: 10px;
+    }
+
+    .container {
+      margin-left: 10px;
+    }
+
+    .social {
+      display: flex;
+      flex-direction: row;
+      padding-left: 150px;
+    }
+
+    .social a {
+      padding-right: 5px;
+    }
+
+    .socialicons {
+      margin-top: 17px;
+      margin-bottom: 20px;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+
+    #hello {
+      margin-top: 20px;
+    }
+
+    .sign-in {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      padding-left: 50px;
+    }
+
+    .dropdown-menu {
+      background-color: #1C1038;
+    }
+
+    .dropdown-item:hover {
+      background-color: black;
+      color: white;
+    }
+
+    .login {
+      margin-left: 15px;
+      width: 150px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 19px;
+      border-radius: 10px;
+      border-color: #403b49;
+      border-style: solid;
+      background-color: #1C1038;
+      color: white;
+    }
+
+    .login:hover {
+      transition: all 0.6s;
+      color: #ffffff;
+      cursor: pointer;
+      background-color: black;
+      border-color: rgb(3, 3, 46);
+    }
+
+    #log {
+      margin-left: 0px;
+    }
+
+    .social a :hover {
+      color: #797385;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      color: rgb(255, 255, 255);
+    }
+
+    .carousel {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .login a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .title {
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .shr {
+      height: 260px;
+    }
+
+    @media (min-width: 768px) {
+      .shr {
+        height: 520px;
+      }
+
+      .carousel {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+    }
+  </style>
+  <title>Home</title>
+</head>
+
+<body>
+
+  <div id="LoginModal" class="modal fade" data-bs-backdrop="static">
+    <div id="mcontoast" data-count="0" class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="mliveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+          <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+          <small>Just Now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div id='mbo' class="toast-body">
+  
+        </div>
+      </div>
+    </div>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <form id="login_from">
+          <div class="modal-header">
+            <h4 class="modal-title">Login</h4>
+            <button type="button" class="btn-close reset" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="alert-container"></div>
+            <div class="form-group">
+              <label>Mnemonic</label>
+              <textarea id="mnemonic" name="mnemonic" class="form-control" rows="4" required></textarea>
+            </div>
+          </div>
+          <input type="reset" id="res" style="display:none">
+          <div class="modal-footer">
+            <input id="btn-login-sub" type='submit' style="display:none">
+            <input type="button" class="btn btn-outline-secondary reset" data-bs-dismiss="modal" value="Cancel">
+            <button type="button" style="background-color:#1C1038 !important" class="btn btn-primary"
+              id="btn-login">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Navbar-->
+  {% if role == 'NONE' %}
+  <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #1C1038!important;">
+    <div class="container">
+      <img src="static/nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+      </button>
+      <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+        <ul class="navbar-nav text-light">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style="text-decoration-line: overline;" href="/">
+              Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="aboutus">About us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Contact us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+        </div>
+        <div class="sign-in">
+          <button id="logee" class="login">
+            <a href="#LoginModal" onclick="closeoffcanvas()" data-bs-toggle="modal">login<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+          </button>
+        </div>
+      </div>
+      <!--offcanvas-->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <button type="button" id="closeoff" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" style="text-decoration-line: overline;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="aboutus">About us</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+          </div>
+          <div style="padding-left:0px ;" class="sign-in">
+            <button class="login" id="log">
+              <a href="#LoginModal" onclick="closeoffcanvas()" data-bs-toggle="modal">Login<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                  style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% elif role=="ADMIN" %}
+  <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #000000!important;">
+    <div class="container">
+      <img src="static/nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+      </button>
+      <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+        <ul class="navbar-nav text-light">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style="text-decoration-line: overline;" href="/"> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="students">Students</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Contact us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+        </div>
+
+
+
+        <div class="sign-in">
+          <button class="login logout">
+            <a href="#"> Logout &nbsp;<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                style="color: #ffffff; margin-top: 6px; margin-left: 1%x;"></i></a>
+          </button>
+        </div>
+      </div>
+
+      <!--offcanvas-->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" style="text-decoration-line: overline;" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="students">Students</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+          </div>
+
+          <div style="padding-left:0px;" class="sign-in">
+            <button class="login logout" id="log">
+              <a href="#">Logout &nbsp;<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                  style="color: #ffffff; margin-top: 6px; margin-left: 1%x;"></i></a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% elif role=="STUDENT" %}
+  <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #000000!important;">
+    <div class="container">
+      <img src="static/nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+      </button>
+      <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+        <ul class="navbar-nav text-light">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/" style="text-decoration-line: overline;"> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="student">My
+              Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="documents">Documents</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Contact us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+        </div>
+        <div class="sign-in">
+          <button class="logout login">
+            <a href="#">Logout &nbsp;<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+          </button>
+        </div>
+      </div>
+
+      <!--offcanvas-->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/" style="text-decoration-line: overline;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="student">My
+                Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="documents">Documents</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+          </div>
+          <div style="padding-left:0px;" class="sign-in">
+            <button class="logout login" id="log">
+              <a href="#">Logout &nbsp;<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                  style="color: #ffffff; margin-top: 6px; margin-left: 10px;"></i></a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+  <!--Body-->
+
+  <h1>
+    How Does NFT'S Work ?
+  </h1>
+
+  <!--carousel 1-->
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+        aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+        aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/How NFTiers Work .gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/pag2.gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/pag3.gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/pag4.gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/pag5.gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/pag6.gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!--carousel 2-->
+
+  <h1 class="title">
+    Why NFTfiers ?
+  </h1>
+
+  <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+        aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+        aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+        aria-label="Slide 6"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static/How NFTiers Work  (1).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/How NFTiers Work  (2).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/How NFTiers Work  (3).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/How NFTiers Work  (4).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/How NFTiers Work  (5).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+      <div class="carousel-item">
+        <img src="static/How NFTiers Work  (6).gif" class="d-block w-100 shr" alt="..." height="520px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <div id="contoast" data-count="0" class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="static/nftfiers-removebg-preview.png" class="rounded me-2" alt="...">
+        <strong class="me-auto">Admin</strong>
+        <small>Just Now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div id='bo' class="toast-body">
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $(document).on('click', '.logout', function (e) {
+      $.ajax({
+        type: "get",
+        url: "http://127.0.0.1:5000/logout",
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+          if (dataResult.status == true) {
+            createtoast('Logged Out');
+            window.location.href = "http://127.0.0.1:5000/"
+          }
+          else if (dataResult.status == false) {
+            createtoast(dataResult.notify);
+            window.location.href = "http://127.0.0.1:5000/"
+          }
+        },
+        error: function (requestObject, error, errorThrown) {
+          alert("Unable to Connect To Server.!!\nTurn on The Server");
+        }
+      });
+    });
+
+    function createtoast(msg) {
+      var count = parseInt($('#contoast').attr('data-count'));
+      var toast = `<div id="liveToast` + count + `" data-bs-autohide='false' data-bs-animation='true' data-bs-delay='2000' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                  <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                  <strong class="me-auto">>></strong>
+                  <small>Just Now</small>
+                  <button style="color:while!important;" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id='bo`+ count + `' class="toast-body">
+          
+                </div>
+              </div>`;
+      var mtoast=`<div id="mliveToast` + count + `" data-bs-autohide='false' data-bs-animation='true' data-bs-delay='2000' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                  <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                  <strong class="me-auto">>></strong>
+                  <small>Just Now</small>
+                  <button style="color:while!important;" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id='mbo`+ count + `' class="toast-body">
+          
+                </div>
+              </div>`;
+      $('#contoast').html($('#contoast').html() + toast);
+      $('#mcontoast').html($('#mcontoast').html() + mtoast);
+      bo = document.getElementById('bo' + count);
+      bo.innerHTML = msg;
+      mbo = document.getElementById('mbo' + count);
+      mbo.innerHTML = msg;
+      $("#liveToast"+count).addClass("fade show");
+      $("#mliveToast"+count).addClass("fade show");
+      // var toastLiveExample = document.getElementById('liveToast' + count);
+      // var toast1 = new bootstrap.Toast(toastLiveExample);
+      // toast1.show();
+      // var mtoastLiveExample = document.getElementById('mliveToast' + count);
+      // var mtoast1 = new bootstrap.Toast(mtoastLiveExample);
+      // mtoast1.show();
+      count++;
+      $('#contoast').attr('data-count', count);
+      count--;
+      setTimeout(function (e) {
+        $("#liveToast" + count).toast("hide");
+      }, 8000)
+      setTimeout(function (e) {
+        $("#mliveToast" + count).toast("hide");
+      }, 8000)
+    }
+
+    function closeoffcanvas(){
+      $("#closeoff").click();
+    }
+
+
+    $(document).on('click', '#btn-login', function (e) {
+      var form = document.querySelector("#login_from");
+      console.log(form);
+      if (!form.checkValidity()) {
+        $("#btn-login-sub").click();
+      }
+      else {
+        $("#btn-login").html(`Logging In <div class="spinner-grow spinner-grow-sm text-light" role="status"></div>`);
+        $("#btn-login").prop('disabled',true);
+        $.ajax({
+          data: { 'mnemonic': $('#mnemonic').val() },
+          type: "post",
+          url: "http://127.0.0.1:5000/login",
+          success: function (dataResult) {
+            var dataResult = JSON.parse(dataResult);
+            if (dataResult.status == true) {
+              if (dataResult.role == 'admin') {
+                createtoast(dataResult.notify);
+                window.location.href = "http://127.0.0.1:5000/university";
+              }
+              else if (dataResult.role == 'user') {
+                createtoast(dataResult.notify);
+                window.location.href = "http://127.0.0.1:5000/student";
+              }
+            }
+            else if (dataResult.status == false) {
+              createtoast(dataResult.notify);
+              
+            }
+            $('#btn-login').html("Login");
+            $("#btn-login").prop('disabled',false);
+          },
+          error: function (requestObject, error, errorThrown) {
+            alert("Unable to Connect To Server.!!\nTurn on The Server");
+            $('#btn-login').html("Login");
+            $("#btn-login").prop('disabled',false);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

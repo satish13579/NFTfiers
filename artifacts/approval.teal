@@ -1,0 +1,392 @@
+#pragma version 8
+intcblock 0 1
+bytecblock 0x151f7c75 0x 0x757365725f636f756e74 0x6f72675f6e616d65 0x6f72675f74797065 0x426f7820686173204e6f2056616c7565 0x7b222e2e2e2e227d7d7d
+txna ApplicationArgs 0
+pushbytes 0x4c5c61ba // "create()void"
+==
+bnz main_l10
+txna ApplicationArgs 0
+pushbytes 0xf46624cb // "add_user(address,string,string,string)string"
+==
+bnz main_l9
+txna ApplicationArgs 0
+pushbytes 0x373156bb // "add_certificate(address,string,uint64)string"
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0xe2a88e37 // "make_grad(address)string"
+==
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x3c18e8cc // "get_user(address)byte[]"
+==
+bnz main_l6
+err
+main_l6:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+txna ApplicationArgs 1
+callsub getuser_4
+store 10
+bytec_0 // 0x151f7c75
+load 10
+concat
+log
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+txna ApplicationArgs 1
+callsub makegrad_3
+store 9
+bytec_0 // 0x151f7c75
+load 9
+concat
+log
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+txna ApplicationArgs 1
+store 5
+txna ApplicationArgs 2
+store 6
+txna ApplicationArgs 3
+btoi
+store 7
+load 5
+load 6
+load 7
+callsub addcertificate_2
+store 8
+bytec_0 // 0x151f7c75
+load 8
+concat
+log
+intc_1 // 1
+return
+main_l9:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+txna ApplicationArgs 1
+store 0
+txna ApplicationArgs 2
+store 1
+txna ApplicationArgs 3
+store 2
+txna ApplicationArgs 4
+store 3
+load 0
+load 1
+load 2
+load 3
+callsub adduser_1
+store 4
+bytec_0 // 0x151f7c75
+load 4
+concat
+log
+intc_1 // 1
+return
+main_l10:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+==
+&&
+assert
+callsub create_0
+intc_1 // 1
+return
+
+// create
+create_0:
+proto 0 0
+pushbytes 0x646f63735f697373756564 // "docs_issued"
+intc_0 // 0
+app_global_put
+intc_0 // 0
+bytec_3 // "org_name"
+app_global_get_ex
+store 12
+store 11
+load 12
+!
+assert
+bytec_3 // "org_name"
+pushbytes 0x4d4943 // "MIC"
+app_global_put
+intc_0 // 0
+bytec 4 // "org_type"
+app_global_get_ex
+store 14
+store 13
+load 14
+!
+assert
+bytec 4 // "org_type"
+pushbytes 0x456475636174696f6e // "Education"
+app_global_put
+bytec_2 // "user_count"
+intc_0 // 0
+app_global_put
+retsub
+
+// add_user
+adduser_1:
+proto 4 1
+bytec_1 // ""
+global CreatorAddress
+txn Sender
+==
+bnz adduser_1_l2
+pushbytes 0x4f6e6c7920746865206170706c69636174696f6e2063726561746f722063616e20616464207573657273 // "Only the application creator can add users"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b adduser_1_l5
+adduser_1_l2:
+pushbytes 0x7b2267726164223a7b22697367726164223a2230222c22677261647473223a2230303030303030303030227d2c22726f6c6c6e6f223a22 // "{\"grad\":{\"isgrad\":\"0\",\"gradts\":\"0000000000\"},\"rollno\":\""
+frame_dig -3
+extract 2 0
+concat
+pushbytes 0x222c226e616d65223a22 // "\",\"name\":\""
+concat
+frame_dig -2
+extract 2 0
+concat
+pushbytes 0x222c226272616e6368223a22 // "\",\"branch\":\""
+concat
+frame_dig -1
+extract 2 0
+concat
+pushbytes 0x222c226a6f696e5f74696d657374616d70223a22 // "\",\"join_timestamp\":\""
+concat
+global LatestTimestamp
+itob
+concat
+pushbytes 0x222c22636572746966696361746573223a7b222e2e2e223a7b7d7d7d // "\",\"certificates\":{\"...\":{}}}"
+concat
+store 15
+frame_dig -4
+pushint 1000 // 1000
+box_create
+bnz adduser_1_l4
+pushbytes 0x5573657220416c726561647920457869737473 // "User Already Exists"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b adduser_1_l5
+adduser_1_l4:
+frame_dig -4
+pushbytes 0x7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e7e // "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+box_put
+frame_dig -4
+intc_0 // 0
+load 15
+box_replace
+bytec_2 // "user_count"
+bytec_2 // "user_count"
+app_global_get
+intc_1 // 1
++
+app_global_put
+pushbytes 0x557365722061646472657373206164646564207375636365737366756c6c79 // "User address added successfully"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+adduser_1_l5:
+retsub
+
+// add_certificate
+addcertificate_2:
+proto 3 1
+bytec_1 // ""
+frame_dig -3
+box_get
+store 18
+store 17
+load 18
+bnz addcertificate_2_l2
+bytec 5 // "Box has No Value"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b addcertificate_2_l5
+addcertificate_2_l2:
+load 17
+store 16
+pushint 16 // 16
+frame_dig -1
+frame_dig -3
+callsub checkposition_5
+bnz addcertificate_2_l4
+pushbytes 0x537562737472696e67204e6f74204d617463686564 // "Substring Not Matched"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b addcertificate_2_l5
+addcertificate_2_l4:
+frame_dig -3
+frame_dig -1
+frame_dig -2
+extract 2 0
+pushbytes 0x2c222e2e2e223a7b7d7d7d // ",\"...\":{}}}"
+concat
+box_replace
+pushbytes 0x4365727469666963617465204164646564 // "Certificate Added"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+addcertificate_2_l5:
+retsub
+
+// make_grad
+makegrad_3:
+proto 1 1
+bytec_1 // ""
+frame_dig -1
+box_get
+store 21
+store 20
+load 21
+bnz makegrad_3_l2
+bytec 5 // "Box has No Value"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b makegrad_3_l5
+makegrad_3_l2:
+load 20
+extract 19 1
+pushbytes 0x30 // "0"
+==
+bnz makegrad_3_l4
+pushbytes 0x5573657220697320416c72656164792047726164 // "User is Already Grad"
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+b makegrad_3_l5
+makegrad_3_l4:
+frame_dig -1
+pushint 19 // 19
+pushbytes 0x31222c22677261647473223a22 // "1\",\"gradts\":\""
+global LatestTimestamp
+itob
+concat
+box_replace
+makegrad_3_l5:
+retsub
+
+// get_user
+getuser_4:
+proto 1 1
+bytec_1 // ""
+frame_dig -1
+box_get
+store 23
+store 22
+load 23
+assert
+load 22
+frame_bury 0
+frame_dig 0
+len
+itob
+extract 6 0
+frame_dig 0
+concat
+frame_bury 0
+retsub
+
+// check_position
+checkposition_5:
+proto 3 1
+frame_dig -3
+loads
+frame_dig -2
+frame_dig -2
+bytec 6 // "{\"....\"}}}"
+len
++
+substring3
+bytec 6 // "{\"....\"}}}"
+==
+bnz checkposition_5_l2
+intc_0 // 0
+store 19
+b checkposition_5_l3
+checkposition_5_l2:
+intc_1 // 1
+store 19
+checkposition_5_l3:
+load 19
+retsub

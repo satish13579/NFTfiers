@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students</title>
+  <script src="https://kit.fontawesome.com/a4e89c7158.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #1C1038;
+    }
+
+    .collapse {
+      margin-left: 1%px;
+      display: flex;
+      flex-direction: row;
+      flex: 3;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .collapse ul li a {
+      color: rgb(255, 255, 255);
+      margin-right: 10px;
+
+    }
+
+    .container {
+      margin-left: 1%x;
+    }
+
+    .social {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .social a {
+      padding-right: 5px;
+    }
+
+    .socialicons {
+      margin-top: 17px;
+      margin-bottom: 20px;
+    }
+
+    span {
+      margin-left: 1%x;
+    }
+
+    #hello {
+      margin-top: 20px;
+    }
+
+    .sign-in {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .dropdown-menu {
+      background-color: #000000;
+      border: 3px;
+      border-width: 5px;
+      border-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .dropdown-item:hover {
+      background-color: #1C1038;
+      color: white;
+    }
+
+
+    .login {
+      margin-left: 1%x;
+      width: 130px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 19px;
+      border-radius: 10px;
+      border-color: #403b49;
+      border-style: solid;
+      background-color: #1C1038;
+      color: white;
+    }
+
+    .login:hover {
+      transition: all 0.4s;
+      color: #ffffff;
+      cursor: pointer;
+      background-color: black;
+      border-color: rgb(3, 3, 46);
+    }
+
+    #log {
+      margin-left: 0%;
+    }
+
+    .social a :hover {
+      color: #797385;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: rgb(0, 0, 0);
+    }
+
+    .login a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+
+    .whole {
+      display: flex;
+      justify-content: space-around !important;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 2px solid red;
+    }
+
+    h3 {
+      color: #ffffff;
+    }
+
+    .add {
+      margin-left: 1%x;
+      width: 170px;
+      padding: 8px;
+      font-size: 19px;
+      border-radius: 10px;
+      border-color: #ffffff;
+      border-style: solid;
+      background-color: #1C1038;
+      color: white;
+      text-decoration: none;
+    }
+
+    .add:hover {
+      background-color: black;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-rows: 0fr 1fr;
+      border: 1px;
+      margin-top: 10px;
+    }
+
+    /* .students{
+          display: flex;
+          flex-direction: row;
+          flex: 1;
+          column-gap: 10px;
+          row-gap: 10px;
+          align-items: center;
+        } */
+
+    .no-of {
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-bottom: 0px;
+      color: wheat;
+      display: flex;
+      align-items: center;
+    }
+
+    .first,
+    .second,
+    .third,
+    .fourth,
+    .fifth {
+      color: #000000;
+      border: 1px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      border-color: #000000;
+      border-style: solid;
+      padding: 5px;
+      padding: 10px;
+    }
+
+    .six {
+      width: 150px;
+      border-radius: 10px;
+      border: 1px;
+      border-color: #ffffff;
+      border-style: solid;
+      background-color: #1C1038;
+      color: white;
+    }
+
+    #middle {
+      margin: auto;
+
+    }
+
+    .text-wrap {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-dark sticky-md-top" style="background-color: #000000!important;">
+    <div class="container">
+      <img src="static/nftfiers-removebg-preview.png" alt="logo" class="nav-logo" width="200px">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"><i class="fa-solid fa-bars"></i></button>
+      </button>
+      <div class="collapse navbar-collapse navbar-expand-lg" id="menu">
+        <ul class="navbar-nav text-light">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="university"> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="students"
+              style="text-decoration-line: overline;">Students</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Contact us
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+              </li>
+              <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-instagram fa-xl" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: white;"></i></a>
+          <a href="#"><i class="fa-brands fa-github fa-lg" style="color: white;"></i></a>
+        </div>
+        <div class="sign-in">
+          <button class="login logout">
+            <a href="home">logout<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                style="color: #ffffff; margin-top: 6px; margin-left: 1%x;"></i></a>
+          </button>
+        </div>
+      </div>
+
+      <!--offcanvas-->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="university.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="students.html"
+                style="text-decoration-line: overline;">Students</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Contact us
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-phone fa-shake"></i><span>Phone</span></a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="socialicons">
+            <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-github fa-xl"></i></a>
+          </div>
+          <div class="sign-in">
+            <button class="login logout" id="log">
+              <a href="home">logout<i class="fa-solid fa-right-to-bracket fa-beat fa-sm"
+                  style="color: #ffffff; margin-top: 6px; margin-left: 1%x;"></i></a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!--Body-->
+  <div class="whole">
+    <div class="heading">
+      <h3>Student Dashboard</h3>
+    </div>
+    <div class="add-student">
+      <a href="#AddStdModal" class="add" data-bs-toggle="modal"><i class="fa-solid fa-user fa-sm"></i><span>Add
+          student</span></a>
+    </div>
+  </div>
+  <div class="container" id="middle">
+    <div class="grid">
+      <div class="no-of">
+        <h4><b>No:of Students: </b><span id="std_cnt"></span></h4>
+      </div>
+      <div id="std_con" class="row gy-2 students">
+
+
+      </div>
+    </div>
+  </div>
+  
+
+  <div id="AddStdModal" class="modal fade" data-bs-backdrop="static">
+    <div id="mcontoast" data-count="0" class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="mliveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+          <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+          <small>Just Now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div id='mbo' class="toast-body">
+  
+        </div>
+      </div>
+    </div>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      
+      <div class="modal-content">
+        <form id="add_std_form">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Student</h4>
+            <button type="button" class="btn-close reset" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="alert-container"></div>
+            <div class="form-group">
+              <label>Address</label>
+              <textarea id="add_address" name="address" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" id="add_name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Roll No</label>
+              <input type="text" id="add_rollno" name="rollno" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Branch</label>
+              <input type="text" id="add_branch" name="branch" class="form-control" required>
+            </div>
+          </div>
+          <input type="reset" id="res-add-std" style="display:none">
+          <div class="modal-footer">
+            <input id="btn-add-std-sub" type='submit' style="display:none">
+            <input type="button" class="btn btn-outline-secondary reset" data-bs-dismiss="modal" value="Cancel">
+            <button type="button" style="background-color:#1C1038 !important" class="btn btn-primary"
+              id="btn-add-std">Add Student</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="contoast" data-count="0" class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+        <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+        <small>Just Now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div id='bo' class="toast-body">
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createtoast(msg) {
+      var count = parseInt($('#contoast').attr('data-count'));
+      var toast = `<div id="liveToast` + count + `" data-bs-autohide='false' data-bs-animation='true' data-bs-delay='2000' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                  <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                  <strong class="me-auto">>></strong>
+                  <small>Just Now</small>
+                  <button style="color:while!important;" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id='bo`+ count + `' class="toast-body">
+          
+                </div>
+              </div>`;
+      var mtoast=`<div id="mliveToast` + count + `" data-bs-autohide='false' data-bs-animation='true' data-bs-delay='2000' class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div style="background-color: #000000;color:#ffffff;" class="toast-header">
+                  <img src="static/nftfiers-removebg-preview.png" style="height:20px;width:auto;" class="rounded me-2" alt="...">
+                  <strong class="me-auto">>></strong>
+                  <small>Just Now</small>
+                  <button style="color:while!important;" type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div id='mbo`+ count + `' class="toast-body">
+          
+                </div>
+              </div>`;
+      $('#contoast').html($('#contoast').html() + toast);
+      $('#mcontoast').html($('#mcontoast').html() + mtoast);
+      bo = document.getElementById('bo' + count);
+      bo.innerHTML = msg;
+      mbo = document.getElementById('mbo' + count);
+      mbo.innerHTML = msg;
+      $("#liveToast"+count).addClass("fade show");
+      $("#mliveToast"+count).addClass("fade show");
+      // var toastLiveExample = document.getElementById('liveToast' + count);
+      // var toast1 = new bootstrap.Toast(toastLiveExample);
+      // toast1.show();
+      // var mtoastLiveExample = document.getElementById('mliveToast' + count);
+      // var mtoast1 = new bootstrap.Toast(mtoastLiveExample);
+      // mtoast1.show();
+      count++;
+      $('#contoast').attr('data-count', count);
+      count--;
+      setTimeout(function (e) {
+        $("#liveToast" + count).toast("hide");
+      }, 8000)
+      setTimeout(function (e) {
+        $("#mliveToast" + count).toast("hide");
+      }, 8000)
+    }
+    $(document).on('click', '.logout', function (e) {
+      $.ajax({
+        type: "get",
+        url: "http://127.0.0.1:5000/logout",
+        success: function (dataResult) {
+          var dataResult = JSON.parse(dataResult);
+          if (dataResult.status == true) {
+            createtoast('Logged Out');
+            window.location.href = "http://127.0.0.1:5000/"
+          }
+          else if (dataResult.status == false) {
+            createtoast(dataResult.notify);
+            window.location.href = "http://127.0.0.1:5000/"
+          }
+        },
+        error: function (requestObject, error, errorThrown) {
+          alert("Unable to Connect To Server.!!\nTurn on The Server");
+        }
+      });
+    });
+
+    function tstostr(str) {
+      var timestamp = parseInt(str); // Replace with your timestamp
+
+      const timestampInMillis = timestamp * 1000;
+
+      // create a new Date object
+      const date = new Date(timestampInMillis);
+
+      // get day, month, and year
+      const day = date.getDate();
+      const month = date.getMonth() + 1; // add 1 to get the actual month
+      const year = date.getFullYear();
+
+      // format the date as dd/mm/yyyy
+      const formattedDate = `${day}/${month}/${year}`;
+      return formattedDate
+    }
+    $(document).ready(function (e) {
+      createtoast("Fetching Students From Blockchain,\nThis May Take Few Seconds")
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/get_students",
+        success: function (data) {
+          d = JSON.parse(data);
+          if (d.status == true) {
+            createtoast("Fetched Students From Blockchain Successfully.!!");
+            data = d.data.students;
+            $("#std_cnt").html(data.length);
+            for (var i = 0; i < data.length; i++) {
+              std = data[i];
+              console.log(Object.keys(std.certificates).length);
+              var hv = (std.grad.isgrad == "0") ? " Not Graduated" : " Graduated"
+              var hvv = (std.grad.isgrad == "0") ? " -" : " " + tstostr(std.grad.gradts)
+              if (std.grad.isgrad == "0") {
+                hbb = "makegrad";
+                hnn = "Make Graduate";
+                btnstat = ""
+              }
+              else if (Object.keys(std.certificates).length == 2) {
+                hbb = "noaction";
+                hnn = "Certifcate Issued";
+                btnstat = "disabled"
+              }
+              else if (std.grad.isgrad == "1" && Object.keys(std.certificates).length == 1) {
+                hbb = "issuecert";
+                hnn = "Issue Certificate";
+                btnstat = ""
+              }
+              console.log(std);
+              $('#std_con').html($('#std_con').html() + `<div style="position: relative;" class="col-6 col-md-6 col-lg-4 col-xl-2 d-flex flex-column first">
+              <div class="1">
+                  <p style="margin-bottom:4px;"><b>Address:</b><span style="word-wrap:break-word;" id="address`+ std.address + `"> ` + std.address + `</span></p>
+              </div>
+              <div class="1">
+                  <p style="margin-bottom:4px;"><b>Name:</b><span id="name`+ std.address + `"> ` + std.name + `</span></p>
+              </div>
+              <div class="2">
+                  <p style="margin-bottom:4px;"><b>Roll no:</b><span id="rollno`+ std.address + `"> ` + std.rollno + `</span></p>
+              </div>
+              <div class="3">
+                  <p style="margin-bottom:4px;"><b>Branch:</b><span id="branch`+ std.address + `"> ` + std.branch + `</span></p>
+              </div>
+              <div class="4">
+                  <p style="margin-bottom:4px;"><b>Graduation status:</b><span id="gradstatus`+ std.address + `">` + hv + `</span></p>
+              </div>
+              <div class="5">
+                  <p style="margin-bottom:16px;"><b>Graduation Date:</b><span id="graddate`+ std.address + `">` + hvv + `</span></p>
+              </div>
+              <div style="margin-top:18px;" class="flex-grow-1 flex"><div class="6">
+                  <button data-address="`+ std.address + `" style="position:absolute;bottom:0;margin-bottom:10px;margin-left:10%;" class="six" data-role="` + hbb + `" id="btn` + std.address + `" ` + btnstat + `>` + hnn + `</button>
+              </div></div>
+          </div>`);
+            }
+          }
+          else if (d.status == false) {
+            createtoast(d.notify)
+          }
+        }
+      });
+      $(document).on('click', "button[data-role='makegrad']", function (e) {
+        var add = $(this).attr("data-address")
+        createtoast("Sending Call To Smart Contract to Make " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "] as Graduate, This may Take Few Seconds To Confirm");
+        $.ajax({
+          type: "POST",
+          url: "http://127.0.0.1:5000/make_grad",
+          data: { "user_address": add },
+          success: function (data) {
+            d = JSON.parse(data);
+            if (d.status == true) {
+              createtoast("Made " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "] as Graduate.!!");
+              setTimeout(function (e) {
+
+              }, 500);
+              updatestudent(add);
+            }
+            else if (d.status == false) {
+              createtoast("Error From Smart Contract : " + d.notify);
+            }
+            else {
+              createtoast("Something Went Wrong.!!")
+            }
+          }
+        });
+      });
+
+      $(document).on('click', "button[data-role='issuecert']", function (e) {
+        var add = $(this).attr("data-address")
+        createtoast("Minting Graduation Certificate of " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "] as NFT, This May Take Few Seconds To Mint");
+        $.ajax({
+          type: "POST",
+          url: "http://127.0.0.1:5000/upcert",
+          data: { "user_address": add, "type": "grad_cert" },
+          success: function (data) {
+            d = JSON.parse(data);
+            if (d.status == true) {
+              createtoast("Graduation Certificate NFT was Successfully Minted For " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "].!!");
+              setTimeout(function (e) {
+
+              }, 500);
+              updatestudent(add);
+            }
+            else if (d.status == false) {
+              createtoast("Error Occured While Minting Graduation Certificate For " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "] : \n" + d.notify);
+            }
+            else {
+              createtoast("Something Went Wrong.!!");
+            }
+          }
+        });
+
+      });
+    });
+
+
+    function updatestudent(add) {
+      createtoast("Updating status of Student " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "], This May Take Few Seconds");
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/get_user2",
+        data: { "user_address": add },
+        success: function (data) {
+          d = JSON.parse(data);
+          if (d.status) {
+            createtoast(data.notify);
+            window.location = "http://127.0.0.1:5000/"
+          }
+          else {
+            d = JSON.parse(data);
+            console.log(d);
+            var hv = (d.grad.isgrad == "0") ? " Not Graduated" : " Graduated"
+            var hvv = (d.grad.isgrad == "0") ? " -" : " " + tstostr(d.grad.gradts)
+            if (d.grad.isgrad == "0") {
+              hbb = "makegrad";
+              hnn = "Make Graduate";
+              $("#btn" + add).prop("disabled", false);
+            }
+            else if (Object.keys(d.certificates).length == 2) {
+              hbb = "noaction";
+              hnn = "Certifcate Issued";
+              $("#btn" + add).prop("disabled", true);
+            }
+            else if (d.grad.isgrad == "1" && Object.keys(d.certificates).length == 1) {
+              hbb = "issuecert";
+              hnn = "Issue Certificate";
+              $("#btn" + add).prop("disabled", false);
+            }
+            $("#name" + add).html(d.name);
+            $("#rollno" + add).html(d.rollno);
+            $("#branch" + add).html(d.branch);
+            $("#gradstatus" + add).html(hv);
+            $("#graddate" + add).html(hvv);
+            $("#btn" + add).html(hnn);
+            $("#btn" + add).attr("data-role", hbb);
+            createtoast("Updated User Details of " + $("#name" + add).html() + " [" + $("#rollno" + add).html() + "] Successfully.!!");
+          }
+        }
+      })
+    }
+
+    function refreshstudens() {
+      $('#std_con').html('');
+      createtoast("Updating New Students Data From Blockchain,\nThis May Take Few Seconds")
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/get_students",
+        success: function (data) {
+          d = JSON.parse(data);
+          if (d.status == true) {
+            createtoast("Updated New Students Data Fetched From Blockchain Successfully.!!");
+            data = d.data.students;
+            $("#std_cnt").html(data.length);
+            for (var i = 0; i < data.length; i++) {
+              std = data[i];
+              console.log(Object.keys(std.certificates).length);
+              var hv = (std.grad.isgrad == "0") ? " Not Graduated" : " Graduated"
+              var hvv = (std.grad.isgrad == "0") ? " -" : " " + tstostr(std.grad.gradts)
+              if (std.grad.isgrad == "0") {
+                hbb = "makegrad";
+                hnn = "Make Graduate";
+                btnstat = ""
+              }
+              else if (Object.keys(std.certificates).length == 2) {
+                hbb = "noaction";
+                hnn = "Certifcate Issued";
+                btnstat = "disabled"
+              }
+              else if (std.grad.isgrad == "1" && Object.keys(std.certificates).length == 1) {
+                hbb = "issuecert";
+                hnn = "Issue Certificate";
+                btnstat = ""
+              }
+              console.log(std);
+              $('#std_con').html($('#std_con').html() + `<div style="position: relative;" class="col-6 col-md-6 col-lg-4 col-xl-2 d-flex flex-column first">
+              <div class="1">
+                  <p style="margin-bottom:4px;"><b>Address:</b><span style="word-wrap:break-word;" id="address`+ std.address + `"> ` + std.address + `</span></p>
+              </div>
+              <div class="1">
+                  <p style="margin-bottom:4px;"><b>Name:</b><span id="name`+ std.address + `"> ` + std.name + `</span></p>
+              </div>
+              <div class="2">
+                  <p style="margin-bottom:4px;"><b>Roll no:</b><span id="rollno`+ std.address + `"> ` + std.rollno + `</span></p>
+              </div>
+              <div class="3">
+                  <p style="margin-bottom:4px;"><b>Branch:</b><span id="branch`+ std.address + `"> ` + std.branch + `</span></p>
+              </div>
+              <div class="4">
+                  <p style="margin-bottom:4px;"><b>Graduation status:</b><span id="gradstatus`+ std.address + `">` + hv + `</span></p>
+              </div>
+              <div class="5">
+                  <p style="margin-bottom:16px;"><b>Graduation Date:</b><span id="graddate`+ std.address + `">` + hvv + `</span></p>
+              </div>
+              <div style="margin-top:18px;" class="flex-grow-1 flex"><div class="6">
+                  <button data-address="`+ std.address + `" style="position:absolute;bottom:0;margin-bottom:10px;margin-left:10%;" class="six" data-role="` + hbb + `" id="btn` + std.address + `" ` + btnstat + `>` + hnn + `</button>
+              </div></div>
+          </div>`);
+            }
+          }
+          else if (d.status == false) {
+            createtoast(d.notify)
+          }
+        }
+      });
+    }
+
+    $(document).on('click', '#btn-add-std', function (e) {
+      var form = document.querySelector("#add_std_form");
+      console.log(form);
+      if (!form.checkValidity()) {
+        $("#btn-ad-std-sub").click();
+      }
+      else {
+        $.ajax({
+          data: $("#add_std_form").serialize(),
+          type: "post",
+          url: "http://127.0.0.1:5000/au",
+          success: function (dataResult) {
+            var dataResult = JSON.parse(dataResult);
+            if (dataResult.status == true) {
+              createtoast(dataResult.notify);
+              setTimeout(function (e) {
+
+              }, 500);
+              refreshstudens();
+            }
+            else if (dataResult.status == false) {
+              createtoast(dataResult.notify);
+
+            }
+          },
+          error: function (requestObject, error, errorThrown) {
+            alert("Unable to Connect To Server.!!\nTurn on The Server");
+          }
+        });
+      }
+    });
+
+  </script>
+</body>
+
+</html>
